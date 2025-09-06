@@ -19,8 +19,8 @@ const User = ({ user }) => {
           </div>
         </div>
         <div>
-          <h1 className='text-white'>{user.fullname}</h1>
-          <span className='text-white'>{user.email}</span>
+          <h1 className='text-white'>{user?.fullname}</h1>
+          <span className='text-white'>{user?.email}</span>
         </div>
       </div>
     </div>
