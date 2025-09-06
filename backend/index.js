@@ -2,7 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import path from "path";
-import { fileURLToPath } from "url"; // ✅ for __dirname in ESM
+import { fileURLToPath } from "url";
 
 import { app, server } from "./SocketIO/server.js";
 
@@ -35,23 +35,27 @@ try {
 app.use("/api/user", userRoute);
 app.use("/api/message", messageRoute);
 
-// ✅ Fix for __dirname in ESM
+// __dirname fix for ESM
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// ✅ Serve frontend in production
+// Serve frontend in production
 if (process.env.NODE_ENV === "production") {
+  // Serve static files
   app.use(express.static(path.join(__dirname, "frontend", "dist")));
-  app.get("/.*/", (req, res) => {
+
+  // Fallback for React Router
+  app.use((req, res) => {
     res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
   });
 }
 
-// test route
+// Test route
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
+// Start server
 server.listen(port, () => {
   console.log(`🚀 Server running on port ${port}`);
 });
