@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
-set -o errexit  # exit on first error
+# Exit on error
+set -o errexit
 
-# Install backend deps
+# Install backend dependencies
 npm install
 
 # Build frontend
 cd frontend
-npm install
+npm install --include=dev   # ✅ ensures devDependencies are installed on Render
 npm run build
 cd ..
