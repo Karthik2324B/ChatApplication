@@ -34,30 +34,57 @@ function Right() {
 
 export default Right;
 
+// const NoChatSelected = () => {
+
+
+//   const [authUser] = useAuth();
+//   console.log(authUser);
+//   return (
+//     <>
+//       <div className="relative">
+//         <label
+//           htmlFor="my-drawer-2"
+//           className="btn btn-ghost drawer-button lg:hidden absolute left-1 p-1"
+//         >
+//          <MdMenu className='text-4xl text-white p-0'/>
+//         </label>
+//         <div className="flex h-screen items-center justify-center">
+//           <h1 className="text-center">
+//             Welcome{" "}
+//             <span className="font-semibold text-xl">
+//               {authUser?.user?.fullname}
+//             </span>
+//             <br />
+//             No chat selected, please start conversation by selecting anyone to
+//             your contacts
+//           </h1>
+//         </div>
+//       </div>
+//     </>
+//   );
+// };
+
 const NoChatSelected = () => {
   const [authUser] = useAuth();
-  console.log(authUser);
+  console.log("Auth user:", authUser);
   return (
-    <>
-      <div className="relative">
-        <label
-          htmlFor="my-drawer-2"
-          className="btn btn-ghost drawer-button lg:hidden absolute left-1 p-1"
-        >
-         <MdMenu className='text-4xl text-white p-0'/>
-        </label>
-        <div className="flex h-screen items-center justify-center">
-          <h1 className="text-center">
-            Welcome{" "}
-            <span className="font-semibold text-xl">
-              {authUser?.user?.fullname}
-            </span>
-            <br />
-            No chat selected, please start conversation by selecting anyone to
-            your contacts
-          </h1>
-        </div>
+    <div className="relative">
+      <label
+        htmlFor="my-drawer-2"
+        className="btn btn-ghost drawer-button lg:hidden absolute left-1 p-1"
+      >
+        <MdMenu className='text-4xl text-white p-0'/>
+      </label>
+      <div className="flex h-screen items-center justify-center">
+        <h1 className="text-center">
+          Welcome{" "}
+          <span className="font-semibold text-xl">
+            {authUser?.user?.fullname || "Guest"}
+          </span>
+          <br />
+          No chat selected, please start conversation by selecting anyone in your contacts
+        </h1>
       </div>
-    </>
+    </div>
   );
 };
