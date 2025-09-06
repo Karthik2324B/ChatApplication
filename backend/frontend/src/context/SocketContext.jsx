@@ -19,7 +19,7 @@ export const SocketProvider = ({ children }) => {
       const socket = io("https://chatapplication-z1o9.onrender.com", {
         
         query: {
-          userId: authUser.user._id,
+          userId: authUser?.user?._id,
         },
       });
       setSocket(socket);
